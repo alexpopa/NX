@@ -12,26 +12,27 @@ class CreateProfilesTable extends Migration {
 	 */
 	public function up()
 	{
-		$table->increments('id');
-        $table->integer('user_id')->unsigned();
-		$table->string('name');
-		$table->string('username')->unique();
-        $table->biginteger('uid')->unsigned();
-        $table->string('access_token');
-        $table->string('access_token_secret');
-		$table->integer('phone');
-		$table->date('birthday');
-		$table->enum('gender', ['M', 'F']);
-		$table->string('building');
-		$table->string('floor');
-		$table->string('apartment');
-		$table->string('job');
-		$table->string('hometown');
-		$table->string('aboutme');
-		$table->string('motto');
-		$table->string('access_token');
-        $table->string('access_token_secret');
-        $table->timestamps();
+		Schema::create('profiles', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('user_id')->unsigned();
+			$table->string('name');
+			$table->string('username')->unique();
+			$table->biginteger('uid')->unsigned();
+			$table->integer('phone');
+			$table->date('birthday');
+			$table->enum('gender', ['M', 'F']);
+			$table->string('building');
+			$table->string('floor');
+			$table->string('apartment');
+			$table->string('job');
+			$table->string('hometown');
+			$table->string('aboutme');
+			$table->string('motto');
+			$table->string('access_token');
+			$table->string('access_token_secret');
+			$table->timestamps();
+		});
 	}
 
 	/**

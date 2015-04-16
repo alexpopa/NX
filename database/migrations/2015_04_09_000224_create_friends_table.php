@@ -12,10 +12,13 @@ class CreateFriendsTable extends Migration {
 	 */
 	public function up()
 	{
-		$table->increments('id');
-		$table->integer('user_id');
-		$table->integer('friend_id');
-		$table->integer('accepted')->default('0');
+		Schema::create('friends', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('user_id');
+			$table->integer('friend_id');
+			$table->integer('accepted')->default('0');
+		});
 	}
 
 	/**

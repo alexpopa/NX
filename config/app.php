@@ -2,6 +2,9 @@
 
 return [
 
+	'Laravel\Socialite\SocialiteServiceProvider',
+	'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode

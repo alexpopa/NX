@@ -13,12 +13,21 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', ['as' => 'home_path', 'uses' => 'HomeController@index']);
 
 Route::get('test', function()
 {
     return 'Hello World';
 });
+
+/////////////////////////////////////////////////
+//
+//The Routes for any Users Activity
+//
+/////////////////////////////////////////////////
+Route::get ('SignUp',    ['as' => 'users_create_path', 'uses' => 'UsersController@create']);
+Route::post('storeUser', ['as' => 'users_store_path' , 'uses' => 'UsersController@store']);
+
 
 Route::get('logout', function() {
     Auth::logout();
@@ -30,7 +39,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('SignUp', 'HomeController@index');
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));

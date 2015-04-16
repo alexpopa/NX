@@ -16,7 +16,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => true, //todo uncomment env('APP_DEBUG'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -148,6 +148,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		//Added by Patrick Verbovsky
+		'Illuminate\Html\HtmlServiceProvider',
 	],
 
 	/*
@@ -195,6 +197,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		//Added by Patrick Verbovsky
+        'Form'      => 'Illuminate\Html\FormFacade'
 
 	],
 

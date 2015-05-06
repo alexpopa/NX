@@ -23,6 +23,8 @@ Route::get('home', ['as' => 'home_path', 'uses' => 'HomeController@index']);
 Route::get ('SignUp',    ['as' => 'users_create_path', 'uses' => 'UsersController@create']);
 Route::post('storeUser', ['as' => 'users_store_path' , 'uses' => 'UsersController@store']);
 
+Route::get ('Profile', 'HomeController@showProfile');
+
 
 Route::get('logout', function() {
     Auth::logout();

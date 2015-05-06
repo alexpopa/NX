@@ -28,9 +28,26 @@ class HomeController extends Controller {
 	 *
 	 * @return Response
 	 */
+	 
 	public function index()
 	{
 		return view('home');
+	}
+	
+	/**
+	 * Show the profile page to the authenticated user.
+	 *
+	 * @return Response
+	 */
+	 
+	public function showProfile()
+	{
+		$data = array();
+	
+		if (Auth::check()) {
+			$data = Auth::user();
+		}
+		return View::make('Profile', array('data'=>$data));
 	}
 
 }

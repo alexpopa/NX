@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('username')->unique();
 			$table->string('email')->unique();
 			$table->string('password', 60);
-			$table->string('phone')->unique();
+			$table->string('phone')->unique()->nullable();
 			$table->date('birthday');
 			$table->enum('gender', ['M', 'F']);
 			$table->string('building');
@@ -31,13 +31,6 @@ class CreateUsersTable extends Migration {
 			$table->string('motto');
 			$table->rememberToken();
 			$table->timestamps();
-			//$table->increments('id');
-			//$table->string('email')->unique();
-			//$table->string('photo');
-			//$table->string('name');
-			//$table->string('password');
-			//$table->timestamps();
-			//$table->text('remember_token')->nullable();
 		});
 	}
 

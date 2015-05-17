@@ -1,65 +1,51 @@
 @extends('app')
 
+@section('header_content')
+<style>
+label
+{
+    font-weight: bold;
+}
+</style>
+@endsection
+
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+    <h1>Sign Up Page!</h1>
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    {!! Form::open(['method' => 'POST', 'role' => 'form']) !!}        
+        <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
+            {!! Form::label('username', 'Username:') !!}
+            {!! Form::text('username', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('username', '<span class="help-block">:message</span>') !!}
+        </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
-						</div>
+        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+            {!! Form::label('name', 'Name:') !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
+        </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+            {!! Form::label('email', 'Email:') !!}
+            {!! Form::input('email', 'email', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
+        </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+            {!! Form::label('password', 'Password:') !!}
+            {!! Form::password('password', ['class' => 'form-control']) !!}
+            {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
+        </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
+        <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+            {!! Form::label('password_confirmation', 'Confirm Password:') !!}
+            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+            {!! $errors->first('password_confirmation', '<span class="help-block">:message</span>') !!}
+        </div>
+        
+        <div class="form-group">
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+        </div>        
+    {!! Form::close() !!}
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 @endsection

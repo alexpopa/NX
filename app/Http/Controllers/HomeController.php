@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+use View;
+
 class HomeController extends Controller {
 
 	/*
@@ -47,7 +50,7 @@ class HomeController extends Controller {
 		if (Auth::check()) {
 			$data = Auth::user();
 		}
-		return View::make('Profile', array('data'=>$data));
+		return View::make('home', array('data'=>$data));
 	}
 
 }
